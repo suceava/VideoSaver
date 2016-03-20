@@ -108,10 +108,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ocean.mp4" />
+    <Resource Include="app-icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="app-icon.ico" />
+    <None Include="Resources\video.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
