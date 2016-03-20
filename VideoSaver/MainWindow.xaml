@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoSaver"
-        mc:Ignorable="d" Height="350" Width="525" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Topmost="True" Cursor="None" KeyDown="Window_KeyDown" MouseDown="Window_MouseDown" MouseMove="Window_MouseMove" WindowState="Maximized">
-    <DockPanel Margin="0" Background="Black">
-        <MediaElement x:Name="mediaElement" Canvas.Left="0" Canvas.Top="0" Width="Auto" Height="Auto" MediaEnded="mediaElement_MediaEnded" IsMuted="True" Volume="0" />
+        mc:Ignorable="d" Height="168" Width="228" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Cursor="None" KeyDown="Window_KeyDown" MouseDown="Window_MouseDown" MouseMove="Window_MouseMove">
+    <DockPanel x:Name="dockPanel" Margin="0" Background="Black" Width="Auto" Height="Auto">
+        <MediaElement x:Name="mediaElement" Canvas.Left="0" Canvas.Top="0" Width="Auto" Height="Auto" MediaEnded="mediaElement_MediaEnded" IsMuted="True" Volume="0" Stretch="Uniform" />
     </DockPanel>
 </Window>

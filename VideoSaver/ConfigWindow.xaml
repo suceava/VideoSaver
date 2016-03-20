@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoSaver"
         mc:Ignorable="d"
-        Title="Video Screensaver" Height="207.379" Width="323.409" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Video Screensaver" Height="145.292" Width="323.409" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="app-icon.ico">
     <Grid Margin="0" Width="Auto" Height="Auto">
         <Button x:Name="button" Content="OK" Margin="0,0,0,17" VerticalAlignment="Bottom" Width="75" HorizontalAlignment="Center" IsDefault="True" Click="button_Click"/>
-        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="41,37,0,0" VerticalAlignment="Top" Width="235"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="27,25,0,0" TextWrapping="Wrap" Text="This screen saver plays a video defined in the application.  There are no options that can be set." VerticalAlignment="Top"/>
     </Grid>
 </Window>

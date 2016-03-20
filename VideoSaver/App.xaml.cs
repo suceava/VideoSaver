@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace VideoSaver
@@ -23,7 +18,18 @@ namespace VideoSaver
 					/s - Show the screensaver full-screen
 				 */
 
-				switch (e.Args[0])
+				var firstArg = e.Args[0].Trim();
+				var secondArg = e.Args.Length > 1 ? e.Args[1] : null;
+
+				// Handle cases where arguments are separated by colon. 
+				// Examples: /c:1234567 or /p:1234567
+				if (firstArg.Length > 2)
+				{
+					secondArg = firstArg.Substring(3);
+					firstArg = firstArg.Substring(0, 2);
+				}
+
+				switch (firstArg)
 				{
 					case "/c":
 						var configWindow = new ConfigWindow();
@@ -31,21 +37,29 @@ namespace VideoSaver
 						return;
 
 					case "/p": // preview
-						// second argument needs to be a window handle
-						if (e.Args.Length < 2)
+					   // second argument needs to be a window handle
+						if (secondArg == null)
 						{
 							MessageBox.Show("Preview window handle was not provided", "Video Saver", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 							this.Shutdown();
 							return;
 						}
-						IntPtr previewWndHandle = new IntPtr(long.Parse(e.Args[1]));
+						IntPtr previewWndHandle = new IntPtr(long.Parse(secondArg));
 
+						var previewWindow = new MainWindow(previewWndHandle);
+						previewWindow.Show();
 						break;
 
 					case "/s": // full screen
 						var mainWindow = new MainWindow();
+						mainWindow.WindowState = WindowState.Maximized;
+						mainWindow.Topmost = true;
 						mainWindow.Show();
 						break;
+
+					default:
+						this.Shutdown();
+						return;
 				}
 			}
 #if DEBUG
