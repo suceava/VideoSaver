@@ -78,19 +78,19 @@ namespace VideoSaver
 
 		void _winWPFContent_Disposed(object sender, EventArgs e)
 		{
-			this.Close();
+			Application.Current.Shutdown();
 		}
 
 		private void Window_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (!_previewMode)
-				this.Close();
+				Application.Current.Shutdown();
 		}
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			if (!_previewMode)
-				this.Close();
+				Application.Current.Shutdown();
 		}
 
 		private Point mouseLocation = new Point(double.MinValue, double.MinValue);
@@ -105,7 +105,7 @@ namespace VideoSaver
 				// Terminate if mouse is moved a significant distance
 				if (Math.Abs(mouseLocation.X - position.X) > 5 ||
 					Math.Abs(mouseLocation.Y - position.Y) > 5)
-					this.Close();
+					Application.Current.Shutdown();
 			}
 
 			// Update current mouse location

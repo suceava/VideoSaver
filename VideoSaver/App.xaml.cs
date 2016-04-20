@@ -51,6 +51,8 @@ namespace VideoSaver
 						break;
 
 					case "/s": // full screen
+						BlackenAllScreens();
+
 						var mainWindow = new MainWindow();
 						mainWindow.WindowState = WindowState.Maximized;
 						mainWindow.Topmost = true;
@@ -65,10 +67,33 @@ namespace VideoSaver
 #if DEBUG
 			else
 			{
+				BlackenAllScreens();
 				var mainWindow = new MainWindow();
 				mainWindow.Show();
 			}
 #endif
+		}
+
+		private void BlackenAllScreens()
+		{
+			foreach (var screen in System.Windows.Forms.Screen.AllScreens)
+			{
+				if (screen.Primary) continue;
+
+				var w = new Window()
+				{
+					Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black),
+					Left = screen.WorkingArea.Left,
+					Top = screen.WorkingArea.Top,
+					Width = screen.WorkingArea.Width,
+					Height = screen.WorkingArea.Height,
+					Topmost = true,
+					ResizeMode = ResizeMode.NoResize,
+					ShowInTaskbar = false,
+					WindowStyle = WindowStyle.None
+				};
+				w.Show();
+			}
 		}
 
 		private void PrepareVideo()
